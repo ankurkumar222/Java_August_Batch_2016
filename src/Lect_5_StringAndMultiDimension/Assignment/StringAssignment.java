@@ -136,63 +136,42 @@ public class StringAssignment {
 		return output;
 	}
 
-	public static String longestUniqueString(String S) {
-		int start = 0, end = 0, length = 0;
-		boolean bits[] = new boolean[256];
-		int x = 0, y = 0;
-		for (; x < S.length() && y < S.length() && length < S.length() - x; x++) {
-			bits[S.charAt(x)] = true;
-			for (y++; y < S.length() && !bits[S.charAt(y)]; y++) {
-				bits[S.charAt(y)] = true;
-			}
-			if (length < y - x) {
-				start = x;
-				end = y;
-				length = y - x;
-			}
-			while (y < S.length() && x < y && S.charAt(x) != S.charAt(y))
-				bits[S.charAt(x++)] = false;
-		}
-		return S.substring(start, end);
-	}
-
-	private static int check(String input) {
-		if (input == null || input.isEmpty()) {
-			return 0;
-		}
-		if (input.length() == 1) {
-			return 1;
+	public static String findLargestUniqueSubstring(String str){
+		if(str.length()==0){
+			return "";
 		}
 
-		StringBuilder longestString = new StringBuilder();
-		int longest = 0;
-		int inputLength = input.length();
-		//
-		for (int index = 0; index < inputLength; index++) {
-			char currentChar = input.charAt(index);
+		int lastIndex[] = new int[256];
+		for(int i = 0; i < lastIndex.length; i++){
+			lastIndex[i] = -1;
+		}
+		int currentSubstringStart = 0;
+		int maxSubstringStart = 0;
+		int maxSubstringEnd = 0;
+		int maxSubstringLength = 1;
 
-			int charLastIndex = longestString.indexOf(String.valueOf(currentChar));
-
-			// if repeat is encountered, update longest counter
-			if (charLastIndex > -1) {
-				int length = longestString.length();
-				if (length > longest) {
-					longest = length;
+		for(int i = 0; i < str.length(); i++){
+			char currentChar = str.charAt(i);
+			if(lastIndex[currentChar] >= currentSubstringStart){
+				if( i - currentSubstringStart > maxSubstringLength){
+					maxSubstringStart = currentSubstringStart;
+					maxSubstringEnd = i-1;
+					maxSubstringLength = i - currentSubstringStart;
 				}
-
-				longestString.delete(0, charLastIndex + 1);
+				currentSubstringStart = lastIndex[currentChar] + 1;
 			}
-
-			// append current
-			longestString.append(currentChar);
+			lastIndex[currentChar] = i;
 		}
 
-		// check for last iteration
-		if (longestString.length() > longest)
-			longest = longestString.length();
+		if( str.length() - currentSubstringStart > maxSubstringLength){
+			maxSubstringStart = currentSubstringStart;
+			maxSubstringEnd = str.length()-1;
+			maxSubstringLength = str.length() - currentSubstringStart;
+		}
 
-		return longest;
+		return str.substring(maxSubstringStart,maxSubstringEnd+1);
 	}
+
 
 	/**
 	 * Q_

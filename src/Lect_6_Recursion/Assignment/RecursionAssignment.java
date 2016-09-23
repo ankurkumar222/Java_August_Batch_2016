@@ -1,7 +1,9 @@
 package Lect_6_Recursion.Assignment;
 
 public class RecursionAssignment {
-
+	/**
+	 * Q: All indices of 7
+	 */
 	public static int[] indexesOfSeven(int[] arr, int index) {
 		if (index == arr.length) {
 			int[] result = new int[0];
@@ -23,18 +25,9 @@ public class RecursionAssignment {
 
 	}
 
-	public static String getKeysName(int number) {
-		switch (number) {
-		case 1:
-			return "";
-		case 2:
-			return "ABC";
-		case 3:
-			return "DEF";
-		default:
-			return "";
-		}
-	}
+	/**
+	 * Q: All subset of Array
+	 */
 
 	public static int[][] allSubSetOfArray(int[] input, int index) {
 		if (index == input.length) {
@@ -63,6 +56,9 @@ public class RecursionAssignment {
 		return result;
 	}
 
+	/**
+	 * Q: Keypad
+	 * */
 	public static String[] keyPad(int number) {
 		if (number == 0) {
 			String[] result = { "" };
@@ -70,7 +66,7 @@ public class RecursionAssignment {
 		}
 
 		String[] smallresult = keyPad(number / 10);
-		String keys = getKeysName(number % 10);
+		String keys = AssignmentHelper.getKeysName(number % 10);
 		String[] result = new String[smallresult.length * keys.length()];
 
 		int k = 0;
@@ -84,6 +80,9 @@ public class RecursionAssignment {
 
 	}
 
+	/**
+	 * Q: SubSequence of String
+	 * */
 	public static String[] subSequence(String input) {
 		if (input.length() == 0) {
 			String[] output = {};
@@ -106,6 +105,23 @@ public class RecursionAssignment {
 
 	}
 
+	/**
+	 * Q: SubSequence print
+	 * */
+	public static void subSequencePrint(String input, String resultSoFar) {
+		if (input.length() == 0) {
+			System.out.println(resultSoFar);
+			return;
+		}
+
+		subSequencePrint(input.substring(1), resultSoFar + input.charAt(0));
+		subSequencePrint(input.substring(1), resultSoFar);
+	}
+
+	/**
+	 * Q:permutation of String
+	 * 
+	 * */
 	public static void permutation(String input, String resultSoFar) {
 		if (input.length() == 0) {
 			System.out.println(resultSoFar);
@@ -120,16 +136,9 @@ public class RecursionAssignment {
 		}
 	}
 
-	public static void subSequencePrint(String input, String resultSoFar) {
-		if (input.length() == 0) {
-			System.out.println(resultSoFar);
-			return;
-		}
-
-		subSequencePrint(input.substring(1), resultSoFar + input.charAt(0));
-		subSequencePrint(input.substring(1), resultSoFar);
-	}
-
+	/**
+	 * Q: codes
+	 * */
 	public static String[] codes(String str) {
 		if (str.length() == 1 || str.length() == 0) {
 			if (str.length() == 1) {
@@ -174,54 +183,170 @@ public class RecursionAssignment {
 	}
 
 	/**
-	 * 
-	 * Suppose you have a string made up of only the letters 'a' and 'b'. Write
-	 * a recursive function that checks if the string was generated using the
-	 * following rules - b. the string begins with an 'a' c. each 'a' is
-	 * followed by nothing or an 'a' or "bb" d. each "bb" is followed by nothing
-	 * or an 'a'
+	 * Q: String was generated using some rules
 	 */
-	int checkstring(String input) {
+	public static boolean checkStringWithAandB(String input) {
 		if (input == null) {
-			return 1;
+			return true;
 		}
 		if (input.charAt(0) == 'a') {
-			if (input.charAt(1) == 'a') {
-				return checkstring(input.substring(1));
+			if (input.length() == 1) {
+				return true;
+			} else if (input.charAt(1) == 'a') {
+				return checkStringWithAandB(input.substring(1));
 			} else if (input.charAt(1) == 'b') {
-				return checkstring(input.substring(1));
-			}
-			if (input.length() == 0) {
-				return 1;
+				return checkStringWithAandB(input.substring(1));
 			} else {
-				return 0;
+				return false;
 			}
 		} else if (input.charAt(0) == 'b') {
-			if (input.charAt(1) == 'b' && input.charAt(2) == 'a') {
-				return checkstring(input.substring(2));
-			} else if (input.charAt(1) == 'b' && input.length() == 1) {
-				return 1;
+			if (input.charAt(1) == 'b' && input.length() > 2 && input.charAt(2) == 'a') {
+				return checkStringWithAandB(input.substring(2));
+			} else if (input.charAt(1) == 'b' && input.length() == 2) {
+				return true;
 			} else {
-				return 0;
+				return false;
 			}
+		} else {
+			return false;
 		}
-		return -1;
 	}
 
 	/**
-	 * Q_10 A child is running up a staircase with n steps, and can hop either 1
-	 * step, 2 steps or 3 steps at a time. Implement a method to count how many
-	 * possible ways the child can run up to the stairs.
+	 * Q: child staircase with n steps
 	 */
-
-	public int possibleWays(int n) {
+	public static int findWays(int n) {
 		if (n == 0) {
 			return 0;
 		}
 		if (n == 1) {
 			return 1;
 		}
-		return possibleWays(n - 1) + possibleWays(n - 2) + possibleWays(n - 3);
+		if (n == 2) {
+			return 2;
+		}
+		if (n == 3) {
+			return 4;
+		}
+
+		return findWays(n - 1) + findWays(n - 2) + findWays(n - 3);
+	}
+
+	/**
+	 * Q: String to int
+	 * */
+	public static int convertStringToInt(String input) {
+		if (input.length() == 0) {
+			return 0;
+		}
+		if (input.length() == 1) {
+			return Integer.parseInt(input);
+		}
+		int smallAns = convertStringToInt(input.substring(0, input.length() - 1));
+		int finalAns = smallAns * 10 + Integer.parseInt(input.charAt(input.length() - 1) + "");
+		return finalAns;
+
+	}
+
+	/**
+	 * Q: is Palindrome
+	 * */
+	public static boolean isPalindrom(String input) {
+		if (input.length() == 1 || input.length() == 0) {
+			return true;
+		}
+		if (input.charAt(0) != input.charAt(input.length() - 1)) {
+			return false;
+		}
+		return isPalindrom(input.substring(1, input.length() - 1));
+	}
+
+	/**
+	 * Q: String Manipulator
+	 * */
+	public static String stringManipulator(String str) {
+		if (str.length() == 1) {
+			return str;
+		}
+		if (str.charAt(0) == str.charAt(1)) {
+			String smallResult = stringManipulator(str.substring(1));
+			return str.charAt(0) + "*" + smallResult;
+		} else {
+			String smallResult = stringManipulator(str.substring(1));
+			return str.charAt(0) + smallResult;
+		}
+	}
+
+	/**
+	 * Q: All possible codes from given String
+	 * */
+
+	public static String[] getCode(int input) {
+		if (input == 0) {
+			String[] output = { "" };
+			return output;
+		}
+
+		int lastDigit = input % 10;
+		String[] smallOutput1 = getCode(input / 10);
+		String[] smallOutput2 = new String[0]; // String[] smallOutput2 = null
+												// this will give
+												// nullPointerException
+		int lastTwoDigits = input % 100;
+		if (lastTwoDigits > 10 && lastTwoDigits <= 26) {
+			smallOutput2 = getCode(input / 100);
+		}
+
+		String output[] = new String[smallOutput1.length + smallOutput2.length];
+		int k = 0;
+		for (String s : smallOutput1) {
+			char lastDigitChar = AssignmentHelper.getChar(lastDigit); // (char)('a'-1+lastDigit)
+			output[k] = s + lastDigitChar;
+			k++;
+		}
+
+		for (String s : smallOutput2) {
+			char lastTwoDigitChar = AssignmentHelper.getChar(lastTwoDigits);
+			output[k] = s + lastTwoDigitChar;
+			k++;
+		}
+		return output;
+
+	}
+
+	/**
+	 * Q: Subset sum k
+	 * */
+	public static int[][] subsetsSumKHelper(int[] input, int beginIndex, int k) {
+		if (beginIndex == input.length) {
+			if (k == 0) {
+				return new int[1][0];
+			} else {
+				return new int[0][0];
+			}
+		}
+
+		int[][] smallOutput1 = subsetsSumKHelper(input, beginIndex + 1, k);
+		int[][] smallOutput2 = subsetsSumKHelper(input, beginIndex + 1, k - input[beginIndex]);
+		int[][] output = new int[smallOutput1.length + smallOutput2.length][];
+		int index = 0;
+		for (int i = 0; i < smallOutput1.length; i++) {
+			output[index++] = smallOutput1[i];
+		}
+
+		for (int i = 0; i < smallOutput2.length; i++) {
+			output[index] = new int[smallOutput2[i].length + 1];
+			output[index][0] = input[beginIndex];
+			for (int j = 0; j < smallOutput2[i].length; j++) {
+				output[index][j + 1] = smallOutput2[i][j];
+			}
+			index++;
+		}
+		return output;
+	}
+
+	public static int[][] subsetsSumK(int input[], int k) {
+		return subsetsSumKHelper(input, 0, k);
 	}
 
 	public static void main(String[] args) {
@@ -249,7 +374,12 @@ public class RecursionAssignment {
 		// }
 
 		// subSequencePrint("abc","");
-		permutation("abc", "");
+		// permutation("abc", "");
 
+		// boolean result = checkStringWithAandB("aaabbaaaaaabbaaaaaaaaabb");
+		// int ans = convertStringToInt("1234");
+		// System.out.println(ans);
+		boolean x = isPalindrom("abca");
+		System.out.println(x);
 	}
 }
