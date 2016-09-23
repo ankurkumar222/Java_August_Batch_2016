@@ -65,8 +65,8 @@ public class StringAssignment {
 	}
 
 	/**
-	 * Q_4: Reverse each word of a String. Eg “Welcome to Coding Ninjas”
-	 * reversed is – “emocleW ot gnidoC sajniN”
+	 * Q: Reverse each word. 
+	 *    "Welcome to Coding" ---> “emocleW ot gnidoC”
 	 */
 	public static String reverseEachWord(String input) {
 		String output = "";
@@ -84,7 +84,8 @@ public class StringAssignment {
 	}
 
 	/**
-	 * Q_5: Reverse String word wise. Eg: “Welcome to Coding Ninjas” reversed is
+	 * Q: Reverse String word wise. 
+	 *    "Welcome to Coding Ninjas" reversed is
 	 * – “Ninajs Coding to Welcome”
 	 */
 
@@ -104,10 +105,8 @@ public class StringAssignment {
 	}
 
 	/**
-	 * Q_6: Write code to do basic string compression. E.g: Given aaabbccds
-	 * printout a3b2c2ds.
+	 * Q:  aaabbccds--->a3b2c2ds. 
 	 */
-
 
 	public static String compress(String inputString) {
 		if (inputString == null) {
@@ -136,13 +135,16 @@ public class StringAssignment {
 		return output;
 	}
 
-	public static String findLargestUniqueSubstring(String str){
-		if(str.length()==0){
+	/**
+	 * Q: Largest SubString
+	 */
+	public static String findLargestUniqueSubstring(String str) {
+		if (str.length() == 0) {
 			return "";
 		}
 
 		int lastIndex[] = new int[256];
-		for(int i = 0; i < lastIndex.length; i++){
+		for (int i = 0; i < lastIndex.length; i++) {
 			lastIndex[i] = -1;
 		}
 		int currentSubstringStart = 0;
@@ -150,12 +152,12 @@ public class StringAssignment {
 		int maxSubstringEnd = 0;
 		int maxSubstringLength = 1;
 
-		for(int i = 0; i < str.length(); i++){
+		for (int i = 0; i < str.length(); i++) {
 			char currentChar = str.charAt(i);
-			if(lastIndex[currentChar] >= currentSubstringStart){
-				if( i - currentSubstringStart > maxSubstringLength){
+			if (lastIndex[currentChar] >= currentSubstringStart) {
+				if (i - currentSubstringStart > maxSubstringLength) {
 					maxSubstringStart = currentSubstringStart;
-					maxSubstringEnd = i-1;
+					maxSubstringEnd = i - 1;
 					maxSubstringLength = i - currentSubstringStart;
 				}
 				currentSubstringStart = lastIndex[currentChar] + 1;
@@ -163,20 +165,18 @@ public class StringAssignment {
 			lastIndex[currentChar] = i;
 		}
 
-		if( str.length() - currentSubstringStart > maxSubstringLength){
+		if (str.length() - currentSubstringStart > maxSubstringLength) {
 			maxSubstringStart = currentSubstringStart;
-			maxSubstringEnd = str.length()-1;
+			maxSubstringEnd = str.length() - 1;
 			maxSubstringLength = str.length() - currentSubstringStart;
 		}
 
-		return str.substring(maxSubstringStart,maxSubstringEnd+1);
+		return str.substring(maxSubstringStart, maxSubstringEnd + 1);
 	}
 
-
 	/**
-	 * Q_
-	 */
-
+	 * Q: 2D multiplication
+	 * */
 	public static int[][] multiDArrayMultiplication(int[][] firstarray, int[][] secondarray) {
 		if (secondarray[0].length != firstarray.length) {
 			System.out.println("Matrix cannot be multiplied");
@@ -194,24 +194,8 @@ public class StringAssignment {
 	}
 
 	/**
-	 * Q_9: Rotate a 2D matrix by 90 degrees clockwise E.g - Consider Array 1 2
-	 * 3 4 5 6 7 8 9
-	 * 
-	 * After rotating 90 degrees clockwise it will be - 7 4 1 8 5 2 9 6 3
-	 * 
-	 */
-	public static void reverse2DArray(int[] arr) {
-		int start = 0;
-		int end = arr.length - 1;
-		while (end > start) {
-			int temp = arr[start];
-			arr[start] = arr[end];
-			arr[end] = temp;
-			start++;
-			end--;
-		}
-
-	}
+	 * Q: Rotate a 2D matrix by 90 
+	 * */
 
 	public static void rotate2DArray(int[][] arr) {
 		int[][] result = new int[arr[0].length][arr.length];
@@ -222,7 +206,7 @@ public class StringAssignment {
 		}
 
 		for (int row = 0; row < arr.length; row++) {
-			reverse2DArray(result[row]);
+			StringAssignmentHelper.reverse2DArray(result[row]);
 		}
 
 		for (int row = 0; row < arr.length; row++) {
@@ -244,7 +228,9 @@ public class StringAssignment {
 		}
 		return resultString;
 	}
-
+/**
+ * Q: Pattern Search
+ * */
 	public static int brute(String text, String pattern) {
 		int n = text.length(); // n is length of text.
 		int m = pattern.length(); // m is length of pattern
@@ -259,7 +245,9 @@ public class StringAssignment {
 		}
 		return -1; // no match
 	}
-
+/**
+ * Q: Anagram
+ * */
 	public static boolean isAnagram(String input1, String input2) {
 		if (input1.length() != input2.length()) {
 			return false;
@@ -281,7 +269,9 @@ public class StringAssignment {
 		}
 		return false;
 	}
-
+/**
+ * Q: Rotate String
+ * */
 	public static String rotateString(String inputString, int n) {
 		if (inputString == null) {
 			return null;
