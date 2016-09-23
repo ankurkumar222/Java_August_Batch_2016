@@ -3,8 +3,7 @@ package Lect_5_StringAndMultiDimension.Assignment;
 public class StringAssignment {
 
 	/**
-	 * Q_1: Take a String input from user and return a String that does not
-	 * contain consecutive duplicates. E.g: input "aabccbaa" return "abcba" .
+	 * Q: "aabccbaa" ===> "abcba" 
 	 */
 	public static String notContainConsecutiveDuplicate(String str) {
 		if (str == null) {
@@ -25,7 +24,7 @@ public class StringAssignment {
 	}
 
 	/**
-	 * Q_2: Return highest occurring character in the String.
+	 * Q: highest occurring character.
 	 */
 
 	public static char highestOccuringCharacter(String inputString) {
@@ -47,8 +46,7 @@ public class StringAssignment {
 	}
 
 	/**
-	 * Q_3: Sort an array of Strings based on length.
-	 * 
+	 * Q: Sort based on length. 
 	 */
 
 	public static String[] sortArrayOfString(String[] arrOfString) {
@@ -65,8 +63,7 @@ public class StringAssignment {
 	}
 
 	/**
-	 * Q: Reverse each word. 
-	 *    "Welcome to Coding" ---> “emocleW ot gnidoC”
+	 * Q: "Welcome to Coding" ===> "emocleW ot gnidoC"
 	 */
 	public static String reverseEachWord(String input) {
 		String output = "";
@@ -84,11 +81,8 @@ public class StringAssignment {
 	}
 
 	/**
-	 * Q: Reverse String word wise. 
-	 *    "Welcome to Coding Ninjas" reversed is
-	 * – “Ninajs Coding to Welcome”
+	 * Q: "Welcome to Coding" ===> "Coding to Welcome"
 	 */
-
 	public static String reverseWordWise(String input) {
 		int end = input.length();
 		int i = input.length() - 1;
@@ -105,9 +99,8 @@ public class StringAssignment {
 	}
 
 	/**
-	 * Q:  aaabbccds--->a3b2c2ds. 
+	 * Q: aaabbccds ===> a3b2c2ds.
 	 */
-
 	public static String compress(String inputString) {
 		if (inputString == null) {
 			return null;
@@ -176,7 +169,7 @@ public class StringAssignment {
 
 	/**
 	 * Q: 2D multiplication
-	 * */
+	 */
 	public static int[][] multiDArrayMultiplication(int[][] firstarray, int[][] secondarray) {
 		if (secondarray[0].length != firstarray.length) {
 			System.out.println("Matrix cannot be multiplied");
@@ -194,9 +187,8 @@ public class StringAssignment {
 	}
 
 	/**
-	 * Q: Rotate a 2D matrix by 90 
-	 * */
-
+	 * Q: Rotate a 2D matrix by 90
+	 */
 	public static void rotate2DArray(int[][] arr) {
 		int[][] result = new int[arr[0].length][arr.length];
 		for (int row = 0; row < arr.length; row++) {
@@ -217,6 +209,9 @@ public class StringAssignment {
 		}
 	}
 
+	/**
+	 * Q: To lowercase
+	 * */
 	public static String toLowercase(String inputString) {
 		String resultString = "";
 		for (int i = 0; i < inputString.length(); i++) {
@@ -228,9 +223,10 @@ public class StringAssignment {
 		}
 		return resultString;
 	}
-/**
- * Q: Pattern Search
- * */
+
+	/**
+	 * Q: Pattern Search
+	 */
 	public static int brute(String text, String pattern) {
 		int n = text.length(); // n is length of text.
 		int m = pattern.length(); // m is length of pattern
@@ -245,9 +241,10 @@ public class StringAssignment {
 		}
 		return -1; // no match
 	}
-/**
- * Q: Anagram
- * */
+
+	/**
+	 * Q: Anagram
+	 */
 	public static boolean isAnagram(String input1, String input2) {
 		if (input1.length() != input2.length()) {
 			return false;
@@ -269,9 +266,10 @@ public class StringAssignment {
 		}
 		return false;
 	}
-/**
- * Q: Rotate String
- * */
+
+	/**
+	 * Q: Rotate String
+	 */
 	public static String rotateString(String inputString, int n) {
 		if (inputString == null) {
 			return null;
