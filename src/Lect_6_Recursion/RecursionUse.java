@@ -39,11 +39,11 @@ public class RecursionUse {
 		return check7(smallArray);
 	}
 
-	public static int firstIndexOf_7(int[] arr){
-		if(arr.length==0){
+	public static int firstIndexOf_7(int[] arr) {
+		if (arr.length == 0) {
 			return -1;
 		}
-		if(arr[0]==7){
+		if (arr[0] == 7) {
 			return 0;
 		}
 		int smallArray[] = new int[arr.length - 1];
@@ -51,16 +51,14 @@ public class RecursionUse {
 			smallArray[i - 1] = arr[i];
 		}
 		int result = firstIndexOf_7(smallArray);
-		if(result==-1){
+		if (result == -1) {
 			return -1;
-		}else{
-			return result+1;
+		} else {
+			return result + 1;
 		}
-		
+
 	}
-	
-	
-	
+
 	public static int firstIndexOf7(int[] arr, int index) {
 		if (arr.length == index) {
 			return -1;
@@ -70,32 +68,6 @@ public class RecursionUse {
 		}
 		return firstIndexOf7(arr, index + 1);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 	public static int lastIndexOf7(int[] arr, int index) {
 		if (arr.length == index) {
@@ -114,24 +86,6 @@ public class RecursionUse {
 		}
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	public static void selectionSort(int[] arr) {
 		for (int i = 0; i < arr.length; i++) {
 			int minIndex = i;
@@ -145,8 +99,6 @@ public class RecursionUse {
 			arr[i] = temp;
 		}
 	}
-
-
 
 	public static boolean check7withoutCopying(int[] arr, int index) {
 		if (arr.length == index) {
@@ -176,10 +128,11 @@ public class RecursionUse {
 	}
 
 	public static void main(String[] args) {
-		int[] arr = { 3, 5, 2, 8, 7, 0 };
-		selectionSort(arr);
-		for (int i : arr) {
-			System.out.println(i);
-		}
+		// int[] arr = { 3, 5, 2, 8, 7, 0 };
+		// selectionSort(arr);
+		// for (int i : arr) {
+		// System.out.println(i);
+		// }
+		System.out.println(fibo(50));
 	}
 }

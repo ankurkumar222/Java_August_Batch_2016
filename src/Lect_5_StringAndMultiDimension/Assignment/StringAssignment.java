@@ -26,7 +26,6 @@ public class StringAssignment {
 	/**
 	 * Q: highest occurring character.
 	 */
-
 	public static char highestOccuringCharacter(String inputString) {
 		int charArray[] = new int[256];
 		for (int i = 0; i < inputString.length(); i++) {
@@ -48,7 +47,6 @@ public class StringAssignment {
 	/**
 	 * Q: Sort based on length. 
 	 */
-
 	public static String[] sortArrayOfString(String[] arrOfString) {
 		for (int i = 0; i < arrOfString.length; i++) {
 			for (int j = 0; j < arrOfString.length - i - 1; j++) {
@@ -288,7 +286,7 @@ public class StringAssignment {
 	}
 
 	public static void main(String[] args) {
-		String x = reverseEachWord("welcome to coding ninja");
+		String x = findLargestUniqueSubstring("welcometocodinganinja");
 
 		System.out.println(x);
 	}

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ArrayUsage {
 
-	public static int[] getUserInputArray() {
+	protected static int[] getUserInputArray() {
 		Scanner s = new Scanner(System.in);
 
 		System.out.println("Enter size of Array");

@@ -1,0 +1,19 @@
+
+Polymorphism in Java
+--------------------
+
+Two types of polymorphism in java: 
+	compile time polymorphism 
+	runtime polymorphism.
+
+	compile time polymorphism
+	-------------------------
+		We can perform polymorphism in java by method overloading and method overriding.
+		If you overload static method in java, it is the example of compile time polymorphism. 
+	
+	
+	Runtime Polymorphism in Java
+	-----------------------------
+		Runtime polymorphism is a process in which a call to an overridden method is resolved at runtime rather than compile-time.
+		In this process, an overridden method is called through the reference variable of a superclass. 
+		The determination of the method to be called is based on the object being referred to by the reference variable.

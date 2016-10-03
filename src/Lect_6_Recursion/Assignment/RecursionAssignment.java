@@ -22,7 +22,6 @@ public class RecursionAssignment {
 			}
 			return result;
 		}
-
 	}
 
 	/**
@@ -136,51 +135,7 @@ public class RecursionAssignment {
 		}
 	}
 
-	/**
-	 * Q: codes
-	 * */
-	public static String[] codes(String str) {
-		if (str.length() == 1 || str.length() == 0) {
-			if (str.length() == 1) {
-				int num = str.charAt(0) - '0';
-				char ch = (char) (num + 'a' - 1);
-				String[] result = { ch + "" };
-				return result;
-			} else {
-				String[] result = {};
-				return result;
-			}
-		}
-		String[] smallResult1 = new String[0];
-		String[] smallResult2 = new String[0];
 
-		if (str.charAt(0) >= '1' && str.charAt(0) <= '9' && str.charAt(1) != '0') {
-			int num = str.charAt(0) - '0';
-			char ch = (char) (num + 'a' - 1);
-
-			smallResult1 = codes(str.substring(1));
-			for (int i = 0; i < smallResult1.length; i++) {
-				smallResult1[i] = ch + smallResult1[i];
-			}
-		}
-		if (str.charAt(0) == '1' || (str.charAt(0) == '2' && str.charAt(1) >= '1' && str.charAt(1) <= '6')) {
-			int num = (str.charAt(0) - '0') * 10 + str.charAt(1) - '0';
-			char ch = (char) (num + 'a' - 1);
-			smallResult2 = codes(str.substring(2));
-			for (int i = 0; i < smallResult2.length; i++) {
-				smallResult2[i] = ch + smallResult2[i];
-			}
-		}
-		int k = 0;
-		String result[] = new String[smallResult1.length + smallResult2.length];
-		for (int i = 0; i < smallResult1.length; i++) {
-			result[k++] = smallResult1[i];
-		}
-		for (int i = 0; i < smallResult2.length; i++) {
-			result[k++] = smallResult2[i];
-		}
-		return result;
-	}
 
 	/**
 	 * Q: String was generated using some rules
