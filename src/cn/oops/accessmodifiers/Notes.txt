@@ -1,6 +1,0 @@
-4 types of java access modifiers:
-
-	private
-	default
-	protected
-	public
