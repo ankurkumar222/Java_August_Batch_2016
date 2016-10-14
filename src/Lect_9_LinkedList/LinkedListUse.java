@@ -4,6 +4,60 @@ import java.util.Scanner;
 
 public class LinkedListUse {
 
+	public static void printList1(Node<Integer> head) {
+		if (head == null) {
+			return;
+		}
+		printList1(head.next);
+		System.out.println(head.data);
+	}
+
+	public static Node<Integer> revereseList_I(Node<Integer> head) {
+		Node<Integer> curr = head;
+		Node<Integer> prev = null;
+		Node<Integer> fwd = null;
+
+		while (curr != null) {
+			fwd = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = fwd;
+
+		}
+		return prev;
+	}
+
+	public static Node<Integer> reverseList_R(Node<Integer> head) {
+		if (head.next == null) {
+			return head;
+		}
+		Node<Integer> finalHead = reverseList_R(head.next);
+		head.next.next = head;
+		head.next = null;
+
+		return finalHead;
+	}
+
+	public static Node<Integer> merge(Node<Integer> head1, Node<Integer> head2) {
+
+	}
+
+	public static int searchIndex(Node<Integer> head, int element) {
+
+		if (head == null) {
+			return -1;
+		}
+		if (head.data == element) {
+			return 0;
+		}
+		int smallResult = searchIndex(head.next, element);
+		if (smallResult == -1) {
+			return -1;
+		} else {
+			return smallResult + 1;
+		}
+	}
+
 	public static Node<Integer> prepareLinkedList() {
 		Node<Integer> head = null;
 		Node<Integer> tail = null;
@@ -48,27 +102,28 @@ public class LinkedListUse {
 		// }
 	}
 
-//	public static void insertAtIthR(Node<Integer> head, int pos, int data) {
-//		if (pos == 1) {
-//			Node<Integer> nyaNode = new Node<Integer>(data);
-//			nyaNode.next = head.next;
-//			head.next = nyaNode;
-//			return;
-//		}
-//
-//		insertAtIthR(head.next, pos - 1, data);
-//	}
-//
-//	public static Node<Integer> insertAtIthR2(Node<Integer> head, int pos, int data) {
-//		if (pos == 1) {
-//			Node<Integer> nyaNode = new Node<Integer>(data);
-//			nyaNode.next = head.next;
-//			head.next = nyaNode;
-//			return head;
-//		}
-//		head.next = insertAtIthR2(head.next, pos - 1, data);
-//		return head;
-//	}
+	// public static void insertAtIthR(Node<Integer> head, int pos, int data) {
+	// if (pos == 1) {
+	// Node<Integer> nyaNode = new Node<Integer>(data);
+	// nyaNode.next = head.next;
+	// head.next = nyaNode;
+	// return;
+	// }
+	//
+	// insertAtIthR(head.next, pos - 1, data);
+	// }
+	//
+	// public static Node<Integer> insertAtIthR2(Node<Integer> head, int pos,
+	// int data) {
+	// if (pos == 1) {
+	// Node<Integer> nyaNode = new Node<Integer>(data);
+	// nyaNode.next = head.next;
+	// head.next = nyaNode;
+	// return head;
+	// }
+	// head.next = insertAtIthR2(head.next, pos - 1, data);
+	// return head;
+	// }
 
 	public static Node<Integer> insertAtIthR3(Node<Integer> head, int pos, int data) {
 		if (pos == 1) {
@@ -119,7 +174,8 @@ public class LinkedListUse {
 		head.next.next.next.next.next = new Node<>(60);
 
 		printList(head);
-		head = insertAtIthR3(head, 1, 1000);
+		head = reverseList_R(head);
+
 		System.out.println();
 		printList(head);
 
