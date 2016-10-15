@@ -8,16 +8,26 @@ public class StackUsingLinkedList<T> {
 		size = 0;
 	}
 	
-	push(T data){
-		
+	public void push(T data){
+		LinkedListNode<T> nyaNode = new LinkedListNode<>(data);
+		nyaNode.next = top;
+		top= nyaNode;
 	}
 	
-	pop(){
-		
+	public T pop() throws StackUnderFlow{
+		if(top==null){
+			throw new StackUnderFlow();
+		}
+		T temp = top.data;
+		top = top.next;
+		return temp;
 	}
 	
-	top(){
-		
+	public T top() throws StackUnderFlow{
+		if(top==null){
+			throw new StackUnderFlow();
+		}
+		return top.data;
 	}
 	public boolean isEmpty(){
 		return size()==0 ? true: false;

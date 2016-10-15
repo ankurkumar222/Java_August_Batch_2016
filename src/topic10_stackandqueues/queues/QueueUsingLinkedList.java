@@ -19,10 +19,18 @@ public class QueueUsingLinkedList<T> {
 			rear.next = nyaNode;
 			rear = nyaNode;
 		}
+		size++;
 	}
 
-	public T dequeue() {
-
+	public T dequeue() throws QueueUnderFlowException {
+		if(front==null){
+			throw new QueueUnderFlowException();
+		}
+		LinkedListNode<T> temp = front;
+		front = front.next;
+		size--;
+		return temp.data;
+		
 	}
 
 	int size() {
